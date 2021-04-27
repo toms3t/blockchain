@@ -4,7 +4,6 @@ Flask-Cors==3.0.3
 itsdangerous==1.1.0
 Jinja2==2.11.3
 MarkupSafe==1.1.1
-pycrypto==2.6.1
 pycryptodome==3.10.1
 pycryptodomex==3.10.1
 six==1.15.0

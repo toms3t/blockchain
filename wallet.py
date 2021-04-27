@@ -1,7 +1,7 @@
-from Crypto.PublicKey import RSA
-from Crypto.Signature import PKCS1_v1_5
-from Crypto.Hash import SHA256
-import Crypto.Random
+from Cryptodome.PublicKey import RSA
+from Cryptodome.Signature import PKCS1_v1_5
+from Cryptodome.Hash import SHA256
+import Cryptodome.Random
 import binascii
 
 
@@ -46,7 +46,7 @@ class Wallet:
 
     def generate_keys(self):
         """Generate a new pair of private and public key."""
-        private_key = RSA.generate(1024, Crypto.Random.new().read)
+        private_key = RSA.generate(1024, Cryptodome.Random.new().read)
         public_key = private_key.publickey()
         return (binascii.hexlify(private_key.exportKey(format='DER')).decode('ascii'), binascii.hexlify(public_key.exportKey(format='DER')).decode('ascii'))
 
