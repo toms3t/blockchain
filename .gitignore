@@ -2,5 +2,5 @@ env/
 .DS_Store
 .vscode/
 __pycache__/
-wallet.txt
-blockchain.txt
+*.txt
+!requirements.txt
