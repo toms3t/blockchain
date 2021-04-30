@@ -268,7 +268,7 @@ class Blockchain:
                     Block(block['index'], block['previous_hash'], [Transaction(tx['sender'], tx['recipient'], tx['signature'], tx['amount']) for tx in block['transactions']], block['proof'], block['timestamp']) 
                     for block in node_chain]
                 node_chain_length = len(node_chain)
-                local_chain_length = len(winner.chain)
+                local_chain_length = len(winner_chain)
                 if node_chain_length > local_chain_length and Verification.verify_chain(node_chain):
                     winner_chain = node_chain
                     replace = True
