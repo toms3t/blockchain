@@ -5,6 +5,7 @@ from blockchain import Blockchain
 
 app = Flask(__name__)
 CORS(app)
+port = 80
 
 
 @app.route("/", methods=["GET"])
@@ -22,6 +23,7 @@ def create_keys():
     wallet.create_keys()
     wallet.save_keys()
     if wallet.save_keys():
+        port = 80
         global blockchain
         blockchain = Blockchain(wallet.public_key, port)
         response = {
