@@ -40,6 +40,7 @@ def create_keys():
 @app.route("/wallet", methods=["GET"])
 def load_keys():
     if wallet.load_keys():
+        port = 80
         global blockchain
         blockchain = Blockchain(wallet.public_key, port)
         response = {
@@ -249,15 +250,16 @@ def get_nodes():
     response = {"all_nodes": nodes}
     return jsonify(response), 200
 
-wallet = Wallet(80)
-blockchain = Blockchain(wallet.public_key, 80)
+# wallet = Wallet(80)
+# blockchain = Blockchain(wallet.public_key, 80)
 
-# if __name__ == "__main__":
-#     from argparse import ArgumentParser
-
-#     parser = ArgumentParser()
-#     parser.add_argument("-p", "--port", type=int, default=5000)
-#     args = parser.parse_args()
-#     port = args.port
+if __name__ == "__main__":
+    from argparse import ArgumentParser
+    wallet = Wallet(port)
+    blockchain = Blockchain(wallet.public_key, port)
+    parser = ArgumentParser()
+    parser.add_argument("-p", "--port", type=int, default=5000)
+    args = parser.parse_args()
+    port = args.port
     
-#     app.run(host="0.0.0.0", port=port)
+    app.run(host="0.0.0.0", port=port)

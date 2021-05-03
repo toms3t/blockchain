@@ -205,7 +205,8 @@ class Blockchain:
             self.save_data()
             if not is_receiving:
                 for node in self.__peer_nodes:
-                    url = "http://{}/broadcast-transaction".format(node)
+                    url = "https://{}/broadcast-transaction".format(node)
+                    # add just the top-level domain when adding peer in site (i.e. 'site.com')
                     try:
                         response = requests.post(
                             url,
