@@ -146,7 +146,7 @@
                 <div class="col">
                     <button class="btn btn-primary" @click="onLoadData">{{ view === 'chain' ? 'Load Blockchain' : 'Load Transactions' }}</button>
                     <button v-if="view === 'chain' && wallet" class="btn btn-success" @click="onMine">Mine Coins</button>
-                    <button class="btn btn-warning" @click="onResolve"> Resolve Conflicts</button>
+                    <button class="btn btn-warning" @click="onResolve">Resolve Conflicts</button>
                 </div>
             </div>
             <div class="row">
