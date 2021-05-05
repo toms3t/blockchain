@@ -177,7 +177,7 @@ def add_transaction():
             }
             return jsonify(response), 428
         response = {
-            'message': 'Creating a transaction failed.'
+            'message': 'Transaction declined by peer. Resolve blockchain conflicts first!'
         }
         return jsonify(response), 500
 

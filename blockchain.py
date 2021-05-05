@@ -233,8 +233,11 @@ class Blockchain:
                                                  })
                         if (response.status_code == 400 or
                                 response.status_code == 500):
-                            print('1 Transaction declined, needs resolving')
-                            return False
+                                if response.status_code == 500:
+                                    print('Transaction declined by peer, reconcile blockchain first!')
+                                    return False
+                                else:
+                                    print('Transaction failed.')
                     except requests.exceptions.ConnectionError:
                         continue
             return True
