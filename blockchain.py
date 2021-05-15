@@ -99,8 +99,6 @@ class Blockchain:
                 self.__peer_nodes = set(peer_nodes)
         except (IOError, IndexError):
             pass
-        finally:
-            print('Cleanup!')
 
     def save_data(self):
         """Save blockchain + open transactions snapshot to a file."""
@@ -222,6 +220,7 @@ class Blockchain:
             self.save_data()
             if not is_receiving:
                 for node in self.__peer_nodes:
+                    #Change the url to "http" when working with this app on your local machine
                     url = 'https://{}/broadcast-transaction'.format(node)
                     try:
                         response = requests.post(url,
@@ -276,6 +275,7 @@ class Blockchain:
         self.__open_transactions = []
         self.save_data()
         for node in self.__peer_nodes:
+            #Change the url to "http" when working with this app on your local machine
             url = 'https://{}/broadcast-block'.format(node)
             converted_block = block.__dict__.copy()
             converted_block['transactions'] = [
@@ -341,6 +341,7 @@ class Blockchain:
         winner_chain = self.chain
         replace = False
         for node in self.__peer_nodes:
+            #Change the url to "http" when working with this app on your local machine
             url = 'https://{}/chain'.format(node)
             try:
                 # Send a request and store the response
