@@ -222,7 +222,7 @@ class Blockchain:
             self.save_data()
             if not is_receiving:
                 for node in self.__peer_nodes:
-                    url = 'http://{}/broadcast-transaction'.format(node)
+                    url = 'https://{}/broadcast-transaction'.format(node)
                     try:
                         response = requests.post(url,
                                                  json={
@@ -276,7 +276,7 @@ class Blockchain:
         self.__open_transactions = []
         self.save_data()
         for node in self.__peer_nodes:
-            url = 'http://{}/broadcast-block'.format(node)
+            url = 'https://{}/broadcast-block'.format(node)
             converted_block = block.__dict__.copy()
             converted_block['transactions'] = [
                 tx.__dict__ for tx in converted_block['transactions']]
@@ -341,7 +341,7 @@ class Blockchain:
         winner_chain = self.chain
         replace = False
         for node in self.__peer_nodes:
-            url = 'http://{}/chain'.format(node)
+            url = 'https://{}/chain'.format(node)
             try:
                 # Send a request and store the response
                 response = requests.get(url)
